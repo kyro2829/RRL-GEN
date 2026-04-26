@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RRL Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h5v5H2zm7 0h5v5H9zM2 9h5v5H2zm7 0h5v5H9z"/></svg>
+      OpenAlex
+    </div>
+    <h1>Review of Related<br><em>Literature</em> Generator</h1>
+    <p class="subtitle">Search academic works by topic, origin, and time period</p>
+  </header>
+
+  <div class="search-card">
+    <div class="topic-field field">
+      <label for="topic">Research Topic</label>
+      <input id="topic" type="text" placeholder="e.g. machine learning in healthcare, IoT agriculture…" />
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="year-from">From Year</label>
+        <input id="year-from" type="number" placeholder="e.g. 2018" min="1900" max="2025" />
+      </div>
+      <div class="field">
+        <label for="year-to">To Year</label>
+        <input id="year-to" type="number" placeholder="e.g. 2025" min="1900" max="2025" />
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <span class="filter-label">Origin:</span>
+      <button class="chip active" data-country="any" onclick="setCountry('any')">All Countries</button>
+      <button class="chip" data-country="local" onclick="setCountry('local')">🇵🇭 Local (PH)</button>
+      <button class="chip" data-country="foreign" onclick="setCountry('foreign')">Foreign</button>
+    </div>
+
+    <div class="filter-row">
+      <span class="filter-label">Results:</span>
+      <button class="chip active" data-count="10" onclick="setCount(10)">10</button>
+      <button class="chip" data-count="20" onclick="setCount(20)">20</button>
+      <button class="chip" data-count="30" onclick="setCount(30)">30</button>
+    </div>
+
+    <button class="btn-generate" onclick="searchRRL()" id="gen-btn">
+      <div class="spinner"></div>
+      <span class="btn-label">Generate RRL</span>
+    </button>
+  </div>
+
+  <div id="output"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
